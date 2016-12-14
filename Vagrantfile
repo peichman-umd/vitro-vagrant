@@ -4,6 +4,7 @@
 Vagrant.configure("2") do |config|
 
   config.vm.box = "puppetlabs/centos-7.0-64-puppet"
+  config.vm.box_version = '1.0.1'
 
   config.vm.network "private_network", ip: "192.168.40.15"
 
@@ -38,8 +39,8 @@ Vagrant.configure("2") do |config|
     destination: '/apps/vitro/data/config/applicationSetup.n3'
   config.vm.provision 'file', source: 'files/runtime.properties',
     destination: '/apps/vitro/data/runtime.properties'
-
-  #TODO: need a vitro database on postgres VM
+  config.vm.provision 'file', source: 'files/control',
+    destination: '/apps/vitro/tomcat/control'
 
   # Unicode check issues with Postgres
   # checking unicode handling by db happens here:

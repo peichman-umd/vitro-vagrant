@@ -11,6 +11,6 @@ package { "lsof":
 package { "tree":
   ensure => present,
 }
-package { "vim":
+package { "vim-enhanced":
   ensure => present,
 }
